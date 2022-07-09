@@ -9,7 +9,7 @@ describe('Node Server', () => {
   it('Hello World', async () => {
     const response = await request.get('/');
     expect(response.status).toBe(200);
-    expect(response.text).toBe("Hello, World");
+    expect(response.text).toBe('Hello, World');
   });
   it('Returns Data', async () => {
     const response = await request.get('/data');
