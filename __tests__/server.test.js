@@ -5,9 +5,9 @@ const server = require('../server.js');
 
 const request = supertest(server.app);
 
-describe("Node Server", () => {
+describe('Node Server', () => {
   it('Hello World', async () => {
-    const reponse = await request.get('/');
+    const response = await request.get('/');
     expect(response.status).toBe(200);
     expect(response.text).toBe("Hello, World");
   });
