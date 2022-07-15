@@ -7,6 +7,7 @@ const handle404Error = (req, res, next) => {
     message: '404 Error! This really stinks.',
   };
   res.status(404).json(errorObject);
+  console.log(errorObject);
 };
 
 module.exports = {

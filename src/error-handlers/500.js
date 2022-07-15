@@ -9,6 +9,7 @@ const handle500Error = (err, req, res, next) => {
     message: error,
   };
   res.status(500).json(errorObject);
+  console.log(errorObject);
 };
 
 module.exports = {

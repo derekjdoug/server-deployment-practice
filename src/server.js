@@ -15,7 +15,7 @@ const data = (req, res) => {
 
 const person = (req, res) => {
   res.status(200).send({
-    name: req.query,
+    name: req.params,
   });
 };
 
@@ -24,14 +24,15 @@ const notFound = require('./error-handlers/404');
 const serverError = require('./error-handlers/500');
 const { logger } = require('./middleware/logger');
 const { validator } = require('./middleware/validator');
-app.use(logger);
-app.use(validator);
 
 app.get('/', hello);
 app.get('/data', data);
-app.get('/person', person);
-app.get('/notFound', notFound.handle404Error);
-app.get('/serverError', serverError.handle500Error);
+
+app.use(logger);
+
+app.get('/person/:name', validator, person);
+app.use(notFound.handle404Error);
+app.use(serverError.handle500Error);
 
 function start(port) {
   app.listen(port, () => console.log(`Server listening on port ${port}`));
