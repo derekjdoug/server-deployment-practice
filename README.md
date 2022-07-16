@@ -1,10 +1,10 @@
 # Dougie's server-deployment-practice
 
-## Lab 02: Express
+## Lab 03: Express REST API
 
 ## Author: Derek "Dougie" Douglas
 
-## Collaborators: David Souther, Hugo
+## Collaborators: Danny Castro, Sarah Teklemariam
 
 ## Links
 
