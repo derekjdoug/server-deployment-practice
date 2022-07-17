@@ -19,8 +19,12 @@ describe('Node Server', () => {
       role: 'Student',
     });
   });
-  // it('500 error', () => {
-  //   return server
-  //     .use(handle500Error.handle500Error);
-  // });
+  it('500 error', async () => {
+    const response = await request.get('/throw-error');
+    expect(response.status).toBe(500);
+  });
+  it('404 error', async () => {
+    let response = await request.get('/missing-file');
+    expect(response.status).toBe(404);
+  });
 });

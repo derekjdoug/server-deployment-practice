@@ -1,10 +1,10 @@
 # Dougie's server-deployment-practice
 
-## Lab 02: Express
+## Lab 03: Express REST API
 
 ## Author: Derek "Dougie" Douglas
 
-## Collaborators: David Souther, Hugo
+## Collaborators: Danny Castro, Sarah Teklemariam, Luis Sandoval, Jim Doyle
 
 ## Links
 
@@ -15,9 +15,9 @@
 
 ## Time
 
-- Total time: ~3 hours
-- I am not finished with this lab, I need to finish out the testing suite for errors and the validator middleware. I will work on those Friday, 15 July.
+- Total time: ~5 hours
+- Testing suite needs to be continued to be built out more.
 
 ## Lessons Learned
 
-- I learned a little bit about how the error handling modules were working, and firing when the correct errors were being used---for instance including a 4th argument for the 500 error. I also learned about middleware failing on a certain endpoint, because the middleware was firing before the route of the path was being read. Other than that, I know I really need to focus on understanding the testing methodology and syntax more.
+- This was a really fun lab. I enjoyed building out the CRUD and experimenting with sequelize. I actually thought the syntax for these functions were pretty manageable. Experimenting with the HTTP methods in ThunderClient was a really beneficial experience and strengthened my understanding of how everything works together. The biggest adventure there was in getting update and delete to work. Good practice for diving into the docs for trouble shooting!
