@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const { golfer } = require('./models/golfer');
+const { musician } = require('./models/musician');
 
 let connection_string;
 switch (process.env.NODE_ENV) {
@@ -30,4 +31,5 @@ db.sync();
 module.exports = {
   db,
   Golfer: golfer(db),
+  Musician: musician(db),
 };

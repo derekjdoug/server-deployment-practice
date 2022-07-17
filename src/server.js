@@ -12,6 +12,7 @@ const { data } = require('../src/handlers/data');
 const { hello } = require('../src/handlers/hello');
 const { person } = require('../src/handlers/person');
 const { createGolfer, listGolfers, getGolfer, deleteGolfer, updateGolfer } = require('./handlers/golfer');
+const{ createMusician, listMusician, getMusician, deleteMusician, updateMusician } = require('./handlers/musician');
 const db = require('./db');
 
 const makeError = () => {
@@ -32,6 +33,12 @@ app.post('/golfer', createGolfer);
 app.get('/golfer/:id', getGolfer);
 app.delete('/golfer/:id', deleteGolfer);
 app.put('/golfer/:id', updateGolfer);
+
+app.get('/musician', listMusician);
+app.post('/musician', createMusician);
+app.get('/musician/:id', getMusician);
+app.delete('/musician/:id', deleteMusician);
+app.put('/musician/:id', updateMusician);
 
 app.use(notFound.handle404Error);
 app.use(serverError.handle500Error);
