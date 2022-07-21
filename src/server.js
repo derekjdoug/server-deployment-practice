@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-require('./db');
+const { db } = require('./db');
 
 const app = express();
 const notFound = require('./error-handlers/404');
@@ -13,7 +13,6 @@ const { hello } = require('../src/handlers/hello');
 const { person } = require('../src/handlers/person');
 const { createGolfer, listGolfers, getGolfer, deleteGolfer, updateGolfer } = require('./handlers/golfer');
 const{ createMusician, listMusician, getMusician, deleteMusician, updateMusician } = require('./handlers/musician');
-const db = require('./db');
 
 const makeError = () => {
   throw new Error('This is the error generator');
@@ -43,7 +42,11 @@ app.put('/musician/:id', updateMusician);
 app.use(notFound.handle404Error);
 app.use(serverError.handle500Error);
 
-function start(port) {
+const shouldSyncOnStart = true;
+async function start(port) {
+  if(shouldSyncOnStart){
+    await db.sync();
+  }
   app.listen(port, () => console.log(`Server listening on port ${port}`));
 }
 
