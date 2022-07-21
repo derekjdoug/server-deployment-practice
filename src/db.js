@@ -7,7 +7,7 @@ switch (process.env.NODE_ENV) {
   case 'production':
     connection_string = process.env.DATABASE_URL;
     break;
-  case 'dev':
+  case 'test':
     connection_string = 'sqlite::memory';
     break;
   case 'staging':
@@ -26,7 +26,7 @@ const db = new Sequelize(connection_string, {
 });
 
 //Dev Only
-db.sync();
+// db.sync();
 
 module.exports = {
   db,
