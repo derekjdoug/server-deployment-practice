@@ -1,4 +1,3 @@
-const { throws } = require("assert");
 
 class Collection {
   constructor(model, app, route) {
@@ -8,7 +7,7 @@ class Collection {
 
   async create(req, res) {
     const construct = this.model.build(req.body);
-    await construct.save;
+    await construct.save();
     res.status(200).send(construct);
   }
 
@@ -30,13 +29,15 @@ class Collection {
     res.status(200).send(list);
   }
 
-  // async update(req, res) {
-  //   const updateFile = await this.model.findAll({
-  //     where: {
-  //       id: req.params.id,
-  //     },
-  //   })
-  // }
+  async update(req, res) {
+    const updateFile = await this.model.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).send(updateFile);
+  }
+
   async delete(req, res) {
     const deleteFile = await this.model.destroy({
       where: {
