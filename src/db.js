@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-const { golfer } = require('./models/golfer');
+const { Golfer } = require('./models/Golfer');
 const { musician } = require('./models/musician');
 
 let connection_string;
@@ -30,6 +30,6 @@ const db = new Sequelize(connection_string, {
 
 module.exports = {
   db,
-  Golfer: golfer(db),
+  Golfer: Golfer(db),
   Musician: musician(db),
 };

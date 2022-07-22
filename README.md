@@ -1,10 +1,10 @@
 # Dougie's server-deployment-practice
 
-## Lab 03: Express REST API
+## Lab 04: Data Modeling
 
 ## Author: Derek "Dougie" Douglas
 
-## Collaborators: Danny Castro, Sarah Teklemariam, Luis Sandoval, Jim Doyle
+## Collaborators: David Southard
 
 ## Links
 
