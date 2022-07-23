@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const { db } = require('./db');
+const { db, golfer, musician } = require('./db');
 
 const app = express();
 const notFound = require('./error-handlers/404');
@@ -11,8 +11,8 @@ const { validator } = require('./middleware/validator');
 const { data } = require('../src/handlers/data');
 const { hello } = require('../src/handlers/hello');
 const { person } = require('../src/handlers/person');
-const { createGolfer, listGolfers, getGolfer, deleteGolfer, updateGolfer } = require('./handlers/golfer');
-const{ createMusician, listMusician, getMusician, deleteMusician, updateMusician } = require('./handlers/musician');
+const Collection = require('../src/models/collection');
+
 
 const makeError = () => {
   throw new Error('This is the error generator');
@@ -27,17 +27,9 @@ app.use(express.json());
 
 app.get('/person/:name', validator, person);
 
-app.get('/golfer', listGolfers);
-app.post('/golfer', createGolfer);
-app.get('/golfer/:id', getGolfer);
-app.delete('/golfer/:id', deleteGolfer);
-app.put('/golfer/:id', updateGolfer);
-
-app.get('/musician', listMusician);
-app.post('/musician', createMusician);
-app.get('/musician/:id', getMusician);
-app.delete('/musician/:id', deleteMusician);
-app.put('/musician/:id', updateMusician);
+new Collection(golfer.Golfer, app, '/golfer');
+new Collection(golfer.GolfSponsor, app, '/golfSponsors');
+new Collection(musician, app, '/musician');
 
 app.use(notFound.handle404Error);
 app.use(serverError.handle500Error);
