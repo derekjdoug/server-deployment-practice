@@ -1,12 +1,12 @@
-
 class Collection {
   constructor(model, app, route) {
     this.model = model;
-    this.route = route;
+    this.router(app, route);
   }
 
   async create(req, res) {
     const construct = this.model.build(req.body);
+    console.log(construct);
     await construct.save();
     res.status(200).send(construct);
   }
@@ -50,4 +50,14 @@ class Collection {
       res.status(200).send('Item Deleted');
     }
   }
+
+  router (app, route) {
+    app.get(`${route}`, (req, res) => this.readMany(req, res));
+    app.post(`${route}`, (req, res) => this.create(req, res));
+    app.get(`${route}/:id`, (req, res) => this.readOne(req, res));
+    app.delete(`${route}/:id`, (req, res) => this.delete(req, res));
+    app.put(`${route}/:id`, (req, res) => this.update(req, res));
+  }
 }
+
+module.exports = Collection;

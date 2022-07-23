@@ -39,5 +39,4 @@ const GolferModels = (db) => {
 //   const sponsors = golfer.sponsors;
 // }
 
-
 module.exports = { GolferModels };
